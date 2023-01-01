@@ -66,8 +66,31 @@ void test2() {
         { "Gabriel", 20 }
     };
     display(accounts);
+    accounts.emplace("Jennifer", 17); //the order of display will represent the operator< overload
+    display(accounts);
+    accounts.emplace("Gandalf", 430);
+    display(accounts);
+    auto it = accounts.find(Person{ "Jenny", 18 });
+    if (it != accounts.end())
+        accounts.erase(it);
+    std::cout << ".erase being called on accounts set." << std::endl;
+    display(accounts);
+    it = accounts.find(Person{ "Gandalf",430 });
+    if (it != accounts.end())
+        accounts.erase(it);
+    std::cout << ".erase being called on accounts set." << std::endl;
+    display(accounts);
+    it = accounts.find(Person{ "x", 19 }); //finds Elizabeth as uses the operator< overload.
+    if (it != accounts.end())
+        accounts.erase(it);
+    std::cout << ".erase being called on accounts set." << std::endl;
+    display(accounts);
+    it = accounts.find(Person{ "Gabriel", 0 }); 
+    if (it != accounts.end())
+        accounts.erase(it); //wont erase Gabriel as the age variable is set to 0
+    std::cout << ".erase being called on accounts set." << std::endl;
+    display(accounts);
 }
-
 
 int main()
 {
