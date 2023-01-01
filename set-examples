@@ -92,9 +92,28 @@ void test2() {
     display(accounts);
 }
 
+void test3() {
+    std::cout << "\nTest3===================" << std::endl;
+    std::set <std::string> s2{ "Jenny", "Elizabeth", "Gabriel" };
+    display(s2);
+    auto result = s2.insert("Jennifer");
+    display(s2);
+    std::cout << std::boolalpha;
+    std::cout << "First: " << *(result.first) << std::endl;
+    std::cout << "Second: " << result.second << std::endl; //true - insertion of a new set variable
+    std::cout << std::endl;
+    result = s2.insert("Jenny");
+    display(s2);
+    std::cout << std::boolalpha;
+    std::cout << "First: " << *(result.first) << std::endl;
+    std::cout << "Second: " << result.second << std::endl; //false - insertion of a new set variable
+    std::cout << std::endl;
+}
+
 int main()
 {
     test1();
     test2();
+    test3();
     return 0;
 }
